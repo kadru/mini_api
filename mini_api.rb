@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "sinatra/base"
+require "db"
 
 # Mini Api entry point
 class MiniApi < Sinatra::Base
@@ -8,7 +9,8 @@ class MiniApi < Sinatra::Base
 
   get "/status" do
     {
-      enviroment: ENV["RACK_ENV"]
+      enviroment: ENV["RACK_ENV"],
+      db_connection: DB.run("select 1 + 1").nil? && :ok
     }.to_json
   end
 end
