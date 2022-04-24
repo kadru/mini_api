@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "debug"
 gem "falcon"
 gem "minitest"
 gem "minitest-reporters"

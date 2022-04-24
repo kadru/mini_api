@@ -8,6 +8,7 @@ ENV["DATABASE_URL"] = "postgres:///mini_api_test"
 require "minitest/autorun"
 require "minitest/reporters"
 require 'rack/test'
+require "debug"
 require "./mini_api"
 
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(color: true)]
