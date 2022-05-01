@@ -2,17 +2,7 @@
 
 require "test_helper"
 
-class Request < Minitest::Test
-  include Rack::Test::Methods
-
-  def json_response
-    JSON.parse(last_response.body)
-  end
-
-  def app
-    MiniApi
-  end
-
+class RequestStatus < RequestTest
   def test_get_status
     get "/status"
 
