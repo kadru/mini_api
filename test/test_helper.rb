@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
-
 ENV["RACK_ENV"] ||= "test"
 ENV["DATABASE_URL"] = "postgres:///mini_api_test"
 
