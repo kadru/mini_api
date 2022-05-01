@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# include lib directory in LOAD_PATH
+# include lib and app directory in LOAD_PATH
 $LOAD_PATH.unshift File.expand_path("./lib", __dir__)
 $LOAD_PATH.unshift File.expand_path("./app", __dir__)
 
@@ -12,10 +12,5 @@ require "db"
 class MiniApi < Sinatra::Base
   set :default_content_type, :json
 
-  get "/status" do
-    {
-      enviroment: ENV["RACK_ENV"],
-      db_connection: DB.run("select 1 + 1").nil? && :ok
-    }.to_json
-  end
+  use StatusController
 end
