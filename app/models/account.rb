@@ -15,4 +15,11 @@ class Account < Sequel::Model
       self.[](id:)
     end
   end
+
+  def to_json(*_args)
+    {
+      "id" => id,
+      "balance" => balance
+    }.to_json
+  end
 end
