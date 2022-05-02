@@ -5,6 +5,7 @@ $LOAD_PATH.unshift File.expand_path("./lib", __dir__)
 $LOAD_PATH.unshift File.expand_path("./app", __dir__)
 
 require "sinatra/base"
+require "constants"
 require "db"
 require "controllers/status_controller"
 require "controllers/accounts_controller"
