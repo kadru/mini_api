@@ -2,7 +2,9 @@
 
 require "test_helper"
 
-class AccountTest < Minitest::Test
+class AccountTest < ApplicationTest
+  include AroundTranscation
+
   def test_create
     account = Account.create
     assert_equal 0.0, account.balance

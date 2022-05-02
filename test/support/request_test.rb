@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RequestTest < Minitest::Test
+class RequestTest < ApplicationTest
   include Rack::Test::Methods
 
   def app
