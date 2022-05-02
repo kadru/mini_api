@@ -12,4 +12,18 @@ class AccountsTest < RequestTest
     assert_match(/[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12}/, json_response["id"])
     assert_equal(0, json_response["balance"])
   end
+
+  def test_show_account
+    account = Account.create
+    get "/accounts/#{account.id}"
+
+    assert_equal 200, last_response.status
+    assert_equal json_response.keys, %w[id balance]
+  end
+
+  def test_show_not_found
+    get "/accounts/non-id"
+
+    assert_equal 404, last_response.status
+  end
 end
