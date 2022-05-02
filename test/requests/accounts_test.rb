@@ -9,7 +9,7 @@ class AccountsTest < RequestTest
     post "/accounts"
 
     assert_equal(201, last_response.status)
-    assert_match(/[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12}/, json_response["id"])
+    assert_match(UUID_REGEXP, json_response["id"])
     assert_equal(0, json_response["balance"])
   end
 

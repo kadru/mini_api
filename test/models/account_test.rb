@@ -31,6 +31,6 @@ class AccountTest < ApplicationTest
   def test_create
     account = Account.create
     assert_equal 0.0, account.balance
-    assert_match(/[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12}/, account.id)
+    assert_match(UUID_REGEXP, account.id)
   end
 end
