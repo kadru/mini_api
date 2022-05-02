@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ENV["RACK_ENV"] ||= "test"
-ENV["DATABASE_URL"] = "postgres:///mini_api_test"
+ENV["DATABASE_URL"] ||= "postgres:///mini_api_test"
 
 require "minitest/autorun"
 require "minitest/reporters"
