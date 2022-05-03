@@ -18,7 +18,7 @@ class AccountsTest < RequestTest
     get "/accounts/#{account.id}"
 
     assert_equal 200, last_response.status
-    assert_equal json_response.keys, %w[id balance]
+    assert_equal %w[id balance], json_response.keys
   end
 
   def test_show_not_found

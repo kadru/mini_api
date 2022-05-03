@@ -13,3 +13,5 @@ gem "rake"
 gem "rubocop"
 gem "sequel"
 gem "sinatra"
+
+gem "rubocop-minitest", require: false

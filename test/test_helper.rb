@@ -6,7 +6,7 @@ ENV["DATABASE_URL"] ||= "postgres:///mini_api_test"
 require "minitest/autorun"
 require "minitest/reporters"
 require "minitest/hooks/test"
-require 'rack/test'
+require "rack/test"
 require "debug"
 require "./mini_api"
 require "support/application_test"

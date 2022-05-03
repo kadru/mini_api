@@ -30,7 +30,7 @@ class AccountTest < ApplicationTest
 
   def test_create
     account = Account.create
-    assert_equal 0.0, account.balance
+    assert_in_delta 0.0, account.balance
     assert_match(UUID_REGEXP, account.id)
   end
 end

@@ -11,7 +11,7 @@ class RequestStatus < RequestTest
       "db_connection" => "ok"
     }
 
-    assert last_response.ok?
+    assert_predicate last_response, :ok?
     assert_equal expected_body, json_response
   end
 end
