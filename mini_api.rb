@@ -9,14 +9,13 @@ require "sinatra/json"
 require "rack/contrib"
 require "constants"
 require "db"
+require "controllers/application_controller"
 require "controllers/status_controller"
 require "controllers/accounts_controller"
 require "controllers/transfers_controller"
 
 # Mini Api entry point
 class MiniApi < Sinatra::Base
-  set :default_content_type, :json
-
   use StatusController
   use AccountsController
   use TransfersController

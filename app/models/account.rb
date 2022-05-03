@@ -14,10 +14,10 @@ class Account < Sequel::Model
     end
   end
 
-  def to_json(*_args)
+  def to_h
     {
       "id" => id,
       "balance" => balance
-    }.to_json
+    }
   end
 end

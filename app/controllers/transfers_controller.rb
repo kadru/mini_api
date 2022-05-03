@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 # Make transfers from account to another
-class TransfersController < Sinatra::Base
-  use Rack::JSONBodyParser
-
+class TransfersController < ApplicationController
   post "/transfers" do
     from = Account.find_by_uuid params[:from]
     to = Account.find_by_uuid params[:to]
