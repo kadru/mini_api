@@ -8,10 +8,13 @@ gem "minitest"
 gem "minitest-hooks"
 gem "minitest-reporters"
 gem "pg"
+gem "rack-contrib"
 gem "rack-test"
 gem "rake"
 gem "rubocop"
 gem "sequel"
 gem "sinatra"
+gem "sinatra-contrib"
+gem "timecop"
 
 gem "rubocop-minitest", require: false

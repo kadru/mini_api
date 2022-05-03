@@ -6,6 +6,7 @@ Sequel.extension :fiber_concurrency
 DB = Sequel.connect(ENV.fetch("DATABASE_URL"))
 
 Sequel::Model.plugin :subclasses
+Sequel::Model.plugin :timestamps
 Dir["./app/models/*.rb"].each { |f| require f }
 
 Sequel::Model.freeze_descendents
