@@ -7,13 +7,12 @@ class TransfersTest < RequestTest
     from_account = Account.create(balance: 100)
     to_account = Account.create(balance: 0)
 
-    post "/transfers",
-         {
-           "from" => from_account.id,
-           "to" => to_account.id,
-           "amount" => 100
-         }.to_json,
-         { "CONTENT_TYPE" => "application/json" }
+    post_json "/transfers",
+              params: {
+                "from" => from_account.id,
+                "to" => to_account.id,
+                "amount" => 100
+              }
 
     assert_equal 201, last_response.status
     assert_match(UUID_REGEXP, json_response["id"])
@@ -27,13 +26,12 @@ class TransfersTest < RequestTest
     from_account = Account.create(balance: 100)
     to_account = Account.create(balance: 0)
 
-    post "/transfers",
-         {
-           "from" => from_account.id,
-           "to" => to_account.id,
-           "amount" => 101
-         }.to_json,
-         { "CONTENT_TYPE" => "application/json" }
+    post_json "/transfers",
+              params: {
+                "from" => from_account.id,
+                "to" => to_account.id,
+                "amount" => 101
+              }
 
     assert_equal 422, last_response.status
     assert_equal(
