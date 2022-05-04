@@ -26,6 +26,10 @@ class AccountTest < ApplicationTest
     assert_nil found_account
   end
 
+  def test_find_by_uuid_when_value_is_nil
+    assert_nil Account.find_by_uuid(nil)
+  end
+
   # instance methods
 
   def test_create
