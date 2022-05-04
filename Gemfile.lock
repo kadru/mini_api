@@ -50,6 +50,8 @@ GEM
     localhost (1.1.9)
     mapping (1.1.1)
     minitest (5.15.0)
+    minitest-focus (1.3.1)
+      minitest (>= 4, < 6)
     minitest-hooks (1.5.0)
       minitest (> 5.3)
     minitest-reporters (1.5.0)
@@ -129,6 +131,7 @@ DEPENDENCIES
   debug
   falcon
   minitest
+  minitest-focus
   minitest-hooks
   minitest-reporters
   pg
