@@ -6,12 +6,23 @@ class TransfersController < ApplicationController
     from = Account.find_by_uuid params[:from]
     to = Account.find_by_uuid params[:to]
     amount = params[:amount]
-    from.update balance: from.balance - amount
-    to.update balance: to.balance + amount
+    # debugger
+    if amount > from.balance
+      status 422
+      json({ "errors" => [
+             {
+               "title" => "unsufficient funds",
+               "detail" => "the withdraw account have insufficient funds"
+             }
+           ] })
+    else
+      from.update balance: from.balance - amount
+      to.update balance: to.balance + amount
 
-    transfer = Transfer.create(from_id: from.id, to_id: to.id, amount: params[:amount])
+      transfer = Transfer.create(from_id: from.id, to_id: to.id, amount: params[:amount])
 
-    status 201
-    json transfer.to_h
+      status 201
+      json transfer.to_h
+    end
   end
 end

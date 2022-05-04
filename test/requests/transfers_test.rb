@@ -23,6 +23,32 @@ class TransfersTest < RequestTest
     assert_equal(Time.new(2022, 10, 10, 1).iso8601, json_response["created_at"])
   end
 
+  def test_post_transfer_when_from_account_has_smaller_balance_than_transfer_amount
+    from_account = Account.create(balance: 100)
+    to_account = Account.create(balance: 0)
+
+    post "/transfers",
+         {
+           "from" => from_account.id,
+           "to" => to_account.id,
+           "amount" => 101
+         }.to_json,
+         { "CONTENT_TYPE" => "application/json" }
+
+    assert_equal 422, last_response.status
+    assert_equal(
+      {
+        "errors" => [
+          {
+            "title" => "unsufficient funds",
+            "detail" => "the withdraw account have insufficient funds"
+          }
+        ]
+      },
+      json_response
+    )
+  end
+
   def around
     Timecop.freeze(Time.new(2022, 10, 10, 1)) do
       super
