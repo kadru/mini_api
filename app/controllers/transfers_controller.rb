@@ -7,7 +7,23 @@ class TransfersController < ApplicationController
     to = Account.find_by_uuid params[:to]
     amount = params[:amount]
 
-    if amount > from.balance
+    if from.nil?
+      status 422
+      json({ "errors" => [
+             {
+               "title" => "transeferring account not found",
+               "detail" => "the account with the given id #{params[:from]} doesn't exists"
+             }
+           ] })
+    elsif to.nil?
+      status 422
+      json({ "errors" => [
+             {
+               "title" => "recipient account not found",
+               "detail" => "the account with the given id #{params[:to]} doesn't exists"
+             }
+           ] })
+    elsif amount > from.balance
       status 422
       json({ "errors" => [
              {
