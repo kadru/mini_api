@@ -6,7 +6,7 @@ class TransfersController < ApplicationController
     from = Account.find_by_uuid params[:from]
     to = Account.find_by_uuid params[:to]
     amount = params[:amount]
-    # debugger
+
     if amount > from.balance
       status 422
       json({ "errors" => [
