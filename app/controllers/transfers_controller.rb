@@ -28,7 +28,7 @@ class TransfersController < ApplicationController
       json({ "errors" => [
              {
                "title" => "unsufficient funds",
-               "detail" => "the withdraw account have insufficient funds"
+               "detail" => "the transferring account have insufficient funds"
              }
            ] })
     else

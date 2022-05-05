@@ -39,7 +39,7 @@ class TransfersTest < RequestTest
         "errors" => [
           {
             "title" => "unsufficient funds",
-            "detail" => "the withdraw account have insufficient funds"
+            "detail" => "the transferring account have insufficient funds"
           }
         ]
       },
