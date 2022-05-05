@@ -62,7 +62,7 @@ class TransfersTest < RequestTest
       {
         "errors" => [
           {
-            "title" => "transeferring account not found",
+            "title" => "transferring account not found",
             "detail" => "the account with the given id 2f197419-7538-4d76-93c2-60edc2d865b5 doesn't exists"
           }
         ]
