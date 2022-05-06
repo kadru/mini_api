@@ -11,7 +11,7 @@ class TransfersController < ApplicationController
       status 422
       json({ "errors" => [
              {
-               "title" => "transeferring account not found",
+               "title" => "transferring account not found",
                "detail" => "the account with the given id #{params[:from]} doesn't exists"
              }
            ] })
