@@ -5,14 +5,12 @@ class TransfersController < ApplicationController
   post "/transfers" do
     from = Account.find_by_uuid params[:from]
     to = Account.find_by_uuid params[:to]
-    make_transfer = MakeTransfer.new(
-      from:,
-      from_id: params[:from],
-      to:,
-      to_id: params[:to],
-      amount: params[:amount]
-    )
-    case make_transfer.call
+
+    case MakeTransfer.call(from:,
+                           from_id: params[:from],
+                           to:,
+                           to_id: params[:to],
+                           amount: params[:amount])
     in { status: "success", result: result }
       status 201
       json result

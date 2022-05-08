@@ -2,6 +2,10 @@
 
 # Make transfer from an account to another with the given balance
 class MakeTransfer
+  def self.call(from:, from_id:, to:, to_id:, amount:)
+    new(from:, from_id:, to:, to_id:, amount:).call
+  end
+
   def initialize(from:, from_id:, to:, to_id:, amount:)
     @from_id = from_id
     @from = from
