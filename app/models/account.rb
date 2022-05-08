@@ -2,6 +2,8 @@
 
 # Represent bank accounts
 class Account < Sequel::Model
+  class InvalidAmountError < StandardError; end
+
   dataset_module do
     def uuid?(string)
       string && string.size == 36 && string.match(UUID_REGEXP)
@@ -20,4 +22,12 @@ class Account < Sequel::Model
       "balance" => balance
     }
   end
+
+  def withdraw!(amount)
+    raise InvalidAmountError, "cannot withdraw, amount is greater than balance" if amount > balance
+
+    update balance: balance - amount
+  end
+
+  def deposit(amount) = update balance: balance + amount
 end

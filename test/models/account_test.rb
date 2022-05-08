@@ -37,4 +37,27 @@ class AccountTest < ApplicationTest
     assert_in_delta 0.0, account.balance
     assert_match(UUID_REGEXP, account.id)
   end
+
+  def test_withdraw!
+    account = Account.create balance: 200
+
+    account.withdraw! 100
+    assert_equal 100, account.balance
+  end
+
+  def test_withdraw_when_balance_is_greater_than_balance
+    account = Account.create balance: 200
+
+    assert_raises(Account::InvalidAmountError, "cannot withdraw, amount is greater than balance") do
+      account.withdraw! 201
+    end
+  end
+
+  def test_deposit
+    account = Account.create balance: 100
+
+    account.deposit 200
+
+    assert_equal 300, account.balance
+  end
 end
