@@ -3,8 +3,8 @@
 # Make transfers from account to another
 class TransfersController < ApplicationController
   post "/transfers" do
-    from = Account.find_by_uuid params[:from]
-    to = Account.find_by_uuid params[:to]
+    from = Account.for_update.find_by_uuid params[:from]
+    to = Account.for_update.find_by_uuid params[:to]
 
     case MakeTransfer.call(from:,
                            from_id: params[:from],

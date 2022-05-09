@@ -15,7 +15,9 @@ class MakeTransfer
   end
 
   def call
-    validate || transfer
+    DB.transaction do
+      validate || transfer
+    end
   end
 
   private
