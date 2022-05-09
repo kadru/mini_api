@@ -18,4 +18,17 @@ class AccountsController < ApplicationController
       status 404
     end
   end
+
+  post "/accounts/:id/deposit" do
+    DB.transaction do
+      account = Account.for_update.find_by_uuid(params[:id])
+      if account
+        deposit = account.add_deposit amount: params[:amount]
+        status 201
+        json deposit.to_h
+      else
+        status 404
+      end
+    end
+  end
 end

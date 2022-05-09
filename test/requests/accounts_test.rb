@@ -26,4 +26,28 @@ class AccountsTest < RequestTest
 
     assert_equal 404, last_response.status
   end
+
+  def test_deposit
+    account = Account.create
+    Timecop.freeze(Time.new(2022, 10, 10, 1)) do
+      post_json "/accounts/#{account.id}/deposit",
+                params: {
+                  amount: 1000
+                }
+
+      assert_equal 201, last_response.status
+      assert_match UUID_REGEXP, json_response["id"]
+      assert_equal "2022-10-10T01:00:00-05:00", json_response["created_at"]
+      assert_equal 1000, json_response["amount"]
+    end
+  end
+
+  def test_deposit_when_is_not_found
+    post_json "/accounts/random-uuid/deposit",
+              params: {
+                amount: 1000
+              }
+
+    assert_equal 404, last_response.status
+  end
 end

@@ -3,6 +3,7 @@
 # Represent bank accounts
 class Account < Sequel::Model
   class InvalidAmountError < StandardError; end
+  one_to_many :deposits
 
   dataset_module do
     def uuid?(string)
