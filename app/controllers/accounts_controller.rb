@@ -22,8 +22,10 @@ class AccountsController < ApplicationController
   post "/accounts/:id/deposit" do
     DB.transaction do
       account = Account.for_update.find_by_uuid(params[:id])
+      amount = params[:amount]
       if account
-        deposit = account.add_deposit amount: params[:amount]
+        account.deposit amount
+        deposit = account.add_deposit amount: amount
         status 201
         json deposit.to_h
       else

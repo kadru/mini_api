@@ -40,6 +40,11 @@ class AccountsTest < RequestTest
       assert_equal "2022-10-10T01:00:00-05:00", json_response["created_at"]
       assert_equal 1000, json_response["amount"]
     end
+
+    get "/accounts/#{account.id}"
+
+    assert_equal 200, last_response.status
+    assert_equal 1000, json_response["balance"]
   end
 
   def test_deposit_when_is_not_found
