@@ -2,8 +2,6 @@
 
 # Manage accounts
 class AccountsController < ApplicationController
-  use Rack::JSONBodyParser
-
   post "/accounts" do
     account = Account.create
     status 201
