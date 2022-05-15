@@ -4,7 +4,7 @@
 class StatusController < Sinatra::Base
   get "/status" do
     {
-      enviroment: ENV.fetch("RACK_ENV"),
+      enviroment: ENV.fetch("APP_ENV"),
       db_connection: DB.run("select 1 + 1").nil? && :ok
     }.to_json
   end
