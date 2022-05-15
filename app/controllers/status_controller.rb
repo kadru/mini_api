@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Get current application status
-class StatusController < Sinatra::Base
+class StatusController < ApplicationController
   get "/status" do
     json(
       {
