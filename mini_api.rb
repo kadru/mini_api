@@ -7,6 +7,7 @@ $LOAD_PATH.unshift File.expand_path("./app", __dir__)
 require "sinatra/base"
 require "sinatra/json"
 require "rack/contrib"
+require "logger"
 require "constants"
 require "db"
 require "services/make_transfer"
