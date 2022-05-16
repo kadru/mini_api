@@ -62,6 +62,7 @@ GEM
     multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.8)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -76,6 +77,8 @@ GEM
     protocol-http2 (0.14.2)
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
+    puma (5.6.4)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-contrib (2.3.0)
       rack (~> 2.0)
@@ -135,6 +138,7 @@ DEPENDENCIES
   minitest-hooks
   minitest-reporters
   pg
+  puma
   rack-contrib
   rack-test
   rake
